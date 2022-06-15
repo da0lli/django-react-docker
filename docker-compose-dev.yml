@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  nginx: 
+    restart: unless-stopped
+    build:
+      context: ./
+      dockerfile: ./nginx/Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - static_volume:/app/backend/DRF_Server/static
+      - ./nginx:/etc/nginx/conf.d
+    depends_on: 
+      - backend
+  backend:
+    restart: unless-stopped
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile 
+    entrypoint: ./wsgi-entrypoint.sh
+    volumes:
+      - static_volume:/app/backend/DRF_Server/static
+    expose:
+      - 8000        
+
+volumes:
+  static_volume: {}

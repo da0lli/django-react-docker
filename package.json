@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "dos2unix": "^1.1.2",
+    "virtualenv": "^0.3.1"
+  }
+}
