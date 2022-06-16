@@ -23,7 +23,7 @@ function App() {
       </div>
 
       <div>
-        <h3 id="char-count"></h3>
+        <h3 id="char-count">count</h3>
       </div>
     </div>
   );
