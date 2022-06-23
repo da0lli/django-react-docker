@@ -2,6 +2,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY='thisisjustthedevsecret1234567890'
 DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost']

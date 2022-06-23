@@ -127,6 +127,6 @@ CORS_ORIGIN_ALLOW_ALL = False
 
 
 # Override production variables if DJANGO_DEVELOPMENT env variable is set (make sure it is set true on Development computer)
-if os.environ.get('DJANGO_DEVELOPMENT'):
+if config('DJANGO_DEVELOPMENT'):
     print('DEV Settings activated')
     from DRF_Server.settings_dev import *

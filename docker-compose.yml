@@ -6,6 +6,7 @@ services:
     build:
       context: ./
       dockerfile: ./nginx/Dockerfile
+    container_name: nginx-prod
     ports:
       - 80:80
     volumes:
@@ -13,15 +14,14 @@ services:
       - ./nginx:/etc/nginx/conf.d
       - "${EB_LOG_BASE_DIR}/nginx-prod:/var/log/nginx-prod"
     depends_on: 
-      - backend
+      - backend-prod
   backend-prod:
     restart: unless-stopped
     build:
       context: ./backend
-      args:
-        DJANGO_DEVELOPMENT: "false"
-      dockerfile: ./Dockerfile 
+      dockerfile: ./Dockerfile
     entrypoint: ./wsgi-entrypoint.sh
+    container_name: backend-prod
     env_file:
       - .env
     volumes:

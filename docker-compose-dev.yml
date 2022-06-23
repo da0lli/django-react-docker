@@ -6,6 +6,7 @@ services:
     build:
       context: ./
       dockerfile: ./nginx/Dockerfile
+    container_name: nginx-dev
     ports:
       - 80:80
     volumes:
@@ -19,6 +20,9 @@ services:
       context: ./backend
       dockerfile: ./Dockerfile 
     entrypoint: ./wsgi-entrypoint.sh
+    env_file:
+      - .env
+    container_name: backend-dev
     environment:
       - DJANGO_DEVELOPMENT=true
     volumes:
