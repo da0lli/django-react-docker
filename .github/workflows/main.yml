@@ -25,7 +25,8 @@ jobs:
           string: "${{ steps.current-time.outputs.time }}"
           replace-with: '-'
           flags: 'g'
-          
+
+      #access and secret key defined as Github env variable
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v14
         with:

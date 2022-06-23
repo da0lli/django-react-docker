@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   nginx: 
@@ -19,6 +19,8 @@ services:
       context: ./backend
       dockerfile: ./Dockerfile 
     entrypoint: ./wsgi-entrypoint.sh
+    environment:
+      - DJANGO_DEVELOPMENT=true
     volumes:
       - static_volume:/app/backend/DRF_Server/static
     expose:
