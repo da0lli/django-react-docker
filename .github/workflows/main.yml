@@ -32,8 +32,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: django-react-docker-app
-          environment_name: Djangoreactdockerapp-docker-env
-          version_label: "django-react-docker-app-${{ steps.format-time.outputs.replaced }}"
+          application_name: awsTest-app
+          environment_name: aws-new-env
+          version_label: "awsTest-app-${{ steps.format-time.outputs.replaced }}"
           region: eu-central-1
           deployment_package: deploy.zip

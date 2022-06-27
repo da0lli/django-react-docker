@@ -1,27 +1,29 @@
 version: '3'
 
 services:
-  nginx-prod: 
+
+  nginx: 
     restart: unless-stopped
     build:
       context: ./
       dockerfile: ./nginx/Dockerfile
-    container_name: nginx-prod
+    container_name: nginx
     ports:
       - 80:80
     volumes:
       - static_volume:/app/backend/DRF_Server/static
       - ./nginx:/etc/nginx/conf.d
-      - "${EB_LOG_BASE_DIR}/nginx-prod:/var/log/nginx-prod"
+      - "${EB_LOG_BASE_DIR}/nginx:/var/log/nginx"
     depends_on: 
-      - backend-prod
-  backend-prod:
+      - backend
+
+  backend:
     restart: unless-stopped
     build:
       context: ./backend
       dockerfile: ./Dockerfile
     entrypoint: ./wsgi-entrypoint.sh
-    container_name: backend-prod
+    container_name: backend
     env_file:
       - .env
     volumes:

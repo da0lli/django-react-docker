@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+
   nginx: 
     restart: unless-stopped
     build:
@@ -13,15 +14,14 @@ services:
       - static_volume:/app/backend/DRF_Server/static
       - ./nginx:/etc/nginx/conf.d
     depends_on: 
-      - backend
-  backend:
+      - backend-dev
+
+  backend-dev:
     restart: unless-stopped
     build:
       context: ./backend
       dockerfile: ./Dockerfile 
     entrypoint: ./wsgi-entrypoint.sh
-    env_file:
-      - .env
     container_name: backend-dev
     environment:
       - DJANGO_DEVELOPMENT=true
