@@ -14,9 +14,9 @@ services:
       - static_volume:/app/backend/DRF_Server/static
       - ./nginx:/etc/nginx/conf.d
     depends_on: 
-      - backend-dev
+      - backend
 
-  backend-dev:
+  backend:
     restart: unless-stopped
     build:
       context: ./backend
@@ -24,7 +24,9 @@ services:
     entrypoint: ./wsgi-entrypoint.sh
     container_name: backend-dev
     environment:
-      - DJANGO_DEVELOPMENT=true
+      - DJANGO_DEVELOPMENT=True
+      - SECRET_KEY=thisisjustthedevsecret1234567890
+      - ALLOWED_HOSTS=''
     volumes:
       - static_volume:/app/backend/DRF_Server/static
     expose:
