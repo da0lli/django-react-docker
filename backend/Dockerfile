@@ -12,6 +12,7 @@ COPY ./wsgi-entrypoint.sh ./
 RUN pip install --upgrade pip
 RUN pip install gunicorn
 RUN pip install -r requirements.txt
+RUN chmod +x wsgi-entrypoint.sh
 
 COPY . /app/backend/
 
