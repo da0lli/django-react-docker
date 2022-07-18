@@ -10,7 +10,7 @@ done
 
 dos2unix manage.py
 
-until ./manage.py migrate
+until python ./manage.py migrate
 do
     echo "Waiting for db to be ready..."
     sleep 2
